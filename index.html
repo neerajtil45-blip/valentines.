@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Rose ❤️</title>
+    <style>
+        body {
+            background-color: #fff0f3;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        #container, #memeSection {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 { color: #ff4d6d; font-size: 24px; }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: bold;
+        }
+        #yesBtn { background-color: #ff4d6d; color: white; }
+        #noBtn { 
+            background-color: #ffb4c2; 
+            color: white; 
+            position: absolute; 
+            transition: 0.1s;
+        }
+        #complimentText {
+            margin-top: 20px;
+            color: #ff4d6d;
+            font-style: italic;
+            min-height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>Rose, will you be my Valentine? ❤️</h1>
+        <button id="yesBtn" onclick="celebrate()">Yes!</button>
+        <button id="noBtn">No</button>
+    </div>
+
+    <div id="memeSection" style="display:none;">
+        <h2>Yay! Best decision ever! 😍</h2>
+        <p id="complimentText">Click below for a surprise...</p>
+        <button onclick="generateCompliment()" style="background-color: #ff4d6d; color: white;">Next Reason ❤️</button>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const container = document.getElementById('container');
+        const memeSection = document.getElementById('memeSection');
+        const complimentText = document.getElementById('complimentText');
+
+        // 1. Logic to make the 'No' button move
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+
+        // 2. Logic to switch screens
+        function celebrate() {
+            container.style.display = 'none';
+            memeSection.style.display = 'block';
+        }
+
+        // 3. Compliment Generator Logic
+        const compliments = [
+            "Your smile literally lights up my whole day.",
+        "I love everything of you baby.",
+        "You are my favorite person to talk to.",
+        "I'm so lucky to have a girl like You by my side.",
+        "You are the prettiest girl I've ever met in my life.",
+        "You're the best part of my life so far!"
+        ];
+
+        function generateCompliment() {
+            const randomMsg = compliments[Math.floor(Math.random() * compliments.length)];
+            complimentText.innerText = randomMsg;
+        }
+    </script>
+</body>
+</html>
